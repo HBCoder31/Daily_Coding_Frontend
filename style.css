@@ -1,0 +1,79 @@
+/* Apply a global box-reset to manage widths cleanly */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: hsl(0, 0%, 90%);
+    padding: 20px; /* Prevents the calculator from hitting screen edges on mobile */
+}
+
+#calculator {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px; /* Limits size on desktop, scales down naturally on mobile */
+    overflow: hidden;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+#display {
+    width: 100%;
+    padding: 20px;
+    font-size: clamp(2.5rem, 8vw, 4.5rem); /* Dynamically scales text down on smaller screens */
+    text-align: right; 
+    border: none;
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+    outline: none;
+}
+
+#keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 20px;
+}
+
+button {
+    width: 100%; /* Dynamically fills the grid cell width */
+    aspect-ratio: 1 / 1; /* Magic trick: Forces buttons to stay perfectly circular */
+    border-radius: 50%;
+    border: none;
+    background-color: hsl(0, 0%, 38%);
+    color: aliceblue;
+    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Text shrinks automatically on mobile screens */
+    font-weight: 700; /* Replaced invalid 'extra-bold' with a valid numeric weight */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effects (disabled on touch devices to prevent sticky hover states) */
+@media (hover: hover) {
+    button:hover {
+        background-color: hsl(0, 100%, 76%);
+    }
+    .operator-btn:hover {
+        background-color: hsl(350, 100%, 70%);
+    }
+}
+
+button:active {
+     background-color: hsl(175, 84%, 39%);
+     transform: scale(0.95); /* Adds a tactile press feedback effect */
+}
+
+.operator-btn {
+     background-color: hsl(350, 100%, 60%);   
+}
+
+.operator-btn:active {
+    background-color: hsl(350, 100%, 50%);
+}
