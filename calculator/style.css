@@ -1,4 +1,4 @@
-/* Apply a global box-reset to manage widths cleanly */
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +11,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: hsl(0, 0%, 90%);
-    padding: 20px; /* Prevents the calculator from hitting screen edges on mobile */
+    padding: 20px; 
 }
 
 #calculator {
@@ -19,7 +19,7 @@ body {
     background-color: hsl(0, 0%, 15%);
     border-radius: 15px;
     width: 100%;
-    max-width: 400px; /* Limits size on desktop, scales down naturally on mobile */
+    max-width: 400px; 
     overflow: hidden;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
@@ -27,7 +27,7 @@ body {
 #display {
     width: 100%;
     padding: 20px;
-    font-size: clamp(2.5rem, 8vw, 4.5rem); /* Dynamically scales text down on smaller screens */
+    font-size: clamp(2.5rem, 8vw, 4.5rem); 
     text-align: right; 
     border: none;
     background-color: hsl(0, 0%, 20%);
@@ -43,19 +43,19 @@ body {
 }
 
 button {
-    width: 100%; /* Dynamically fills the grid cell width */
-    aspect-ratio: 1 / 1; /* Magic trick: Forces buttons to stay perfectly circular */
+    width: 100%; 
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     border: none;
     background-color: hsl(0, 0%, 38%);
     color: aliceblue;
-    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Text shrinks automatically on mobile screens */
-    font-weight: 700; /* Replaced invalid 'extra-bold' with a valid numeric weight */
+    font-size: clamp(1.5rem, 5vw, 2.5rem); 
+    font-weight: 700; 
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
-/* Hover effects (disabled on touch devices to prevent sticky hover states) */
+
 @media (hover: hover) {
     button:hover {
         background-color: hsl(0, 100%, 76%);
